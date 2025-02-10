@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>متجر One Piece</title>
+  <!-- تضمين ملف CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <h1>متجر One Piece</h1>
+    <nav>
+      <a href="#">الرئيسية</a>
+      <a href="#">منتجاتنا</a>
+      <a href="#">اتصل بنا</a>
+    </nav>
+    <div class="cart-icon" onclick="toggleCart()">🛒<span id="cart-count">0</span></div>
+    <p>استكشف عالم القراصنة مع منتجات One Piece</p>
+  </header>
+
+  <!-- Products Section -->
+  <section class="products">
+    <div class="product-card" data-name="قبعة لوفي" data-price="50">
+      <h3>قبعة لوفي</h3>
+      <p>سعر: 50$</p>
+      <button onclick="addToCart(this)">أضف إلى السلة</button>
+    </div>
+    <div class="product-card" data-name="سيف زورو" data-price="70">
+      <h3>سيف زورو</h3>
+      <p>سعر: 70$</p>
+      <button onclick="addToCart(this)">أضف إلى السلة</button>
+    </div>
+    <div class="product-card" data-name="حقيبة نامي" data-price="40">
+      <h3>حقيبة نامي</h3>
+      <p>سعر: 40$</p>
+      <button onclick="addToCart(this)">أضف إلى السلة</button>
+    </div>
+  </section>
+
+  <!-- Cart Modal -->
+  <div class="cart-modal" id="cart-modal">
+    <h2>سلة التسوق</h2>
+    <button class="close-btn" onclick="closeCart()">×</button>
+    <div id="cart-items"></div>
+    <div id="cart-total">الإجمالي: $0</div>
+    <div class="empty-cart" id="empty-cart-message" style="display: none;">السلة فارغة حالياً.</div>
+    <div class="cart-actions">
+      <button onclick="continueShopping()">مواصلة التسوق</button>
+      <button onclick="checkout()">الدفع</button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    جميع الحقوق محفوظة &copy; 2023 |
+    <a href="#">Facebook</a> |
+    <a href="#">Instagram</a> |
+    <a href="#">Twitter</a>
+  </footer>
+
+  <!-- تضمين ملف JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>

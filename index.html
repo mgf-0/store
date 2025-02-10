@@ -6,33 +6,44 @@
   <title>متجر One Piece</title>
   <!-- تضمين ملف CSS -->
   <link rel="stylesheet" href="style.css">
+  <!-- تضمين خطوط Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+  <!-- تضمين أيقونات Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
   <!-- Header -->
   <header>
-    <h1>متجر One Piece</h1>
-    <nav>
-      <a href="#">الرئيسية</a>
-      <a href="#">منتجاتنا</a>
-      <a href="#">اتصل بنا</a>
-    </nav>
-    <div class="cart-icon" onclick="toggleCart()">🛒<span id="cart-count">0</span></div>
-    <p>استكشف عالم القراصنة مع منتجات One Piece</p>
+    <div class="container">
+      <h1>متجر One Piece</h1>
+      <nav>
+        <a href="#">الرئيسية</a>
+        <a href="#">منتجاتنا</a>
+        <a href="#">اتصل بنا</a>
+      </nav>
+      <div class="cart-icon" onclick="toggleCart()">
+        <i class="fas fa-shopping-cart"></i><span id="cart-count">0</span>
+      </div>
+      <p>استكشف عالم القراصنة مع منتجات One Piece</p>
+    </div>
   </header>
 
   <!-- Products Section -->
-  <section class="products">
+  <section class="products container">
     <div class="product-card" data-name="قبعة لوفي" data-price="50">
-      <h3>قبعة لوفي</h3>
-      <p>سعر: 50$</p>
-      <button onclick="addToCart(this)">أضف إلى السلة</button>
-    </div>
+  <img src="images/hi.png" alt="قبعة لوفي">
+  <h3>قلادة القراصنة </h3>
+  <p>سعر: 50$</p>
+  <button onclick="addToCart(this)">أضف إلى السلة</button>
+</div>
     <div class="product-card" data-name="سيف زورو" data-price="70">
+      <img src="images/zoro-sword.jpg" alt="سيف زورو">
       <h3>سيف زورو</h3>
       <p>سعر: 70$</p>
       <button onclick="addToCart(this)">أضف إلى السلة</button>
     </div>
     <div class="product-card" data-name="حقيبة نامي" data-price="40">
+      <img src="images/nami-bag.jpg" alt="حقيبة نامي">
       <h3>حقيبة نامي</h3>
       <p>سعر: 40$</p>
       <button onclick="addToCart(this)">أضف إلى السلة</button>
@@ -41,23 +52,27 @@
 
   <!-- Cart Modal -->
   <div class="cart-modal" id="cart-modal">
-    <h2>سلة التسوق</h2>
-    <button class="close-btn" onclick="closeCart()">×</button>
-    <div id="cart-items"></div>
-    <div id="cart-total">الإجمالي: $0</div>
-    <div class="empty-cart" id="empty-cart-message" style="display: none;">السلة فارغة حالياً.</div>
-    <div class="cart-actions">
-      <button onclick="continueShopping()">مواصلة التسوق</button>
-      <button onclick="checkout()">الدفع</button>
+    <div class="container">
+      <h2>سلة التسوق</h2>
+      <button class="close-btn" onclick="closeCart()">×</button>
+      <div id="cart-items"></div>
+      <div id="cart-total">الإجمالي: $0</div>
+      <div class="empty-cart" id="empty-cart-message" style="display: none;">السلة فارغة حالياً.</div>
+      <div class="cart-actions">
+        <button onclick="continueShopping()">مواصلة التسوق</button>
+        <button onclick="checkout()">الدفع</button>
+      </div>
     </div>
   </div>
 
   <!-- Footer -->
   <footer>
-    جميع الحقوق محفوظة &copy; 2023 |
-    <a href="#">Facebook</a> |
-    <a href="#">Instagram</a> |
-    <a href="#">Twitter</a>
+    <div class="container">
+      جميع الحقوق محفوظة &copy; 2023 |
+      <a href="#"><i class="fab fa-facebook"></i> Facebook</a> |
+      <a href="#"><i class="fab fa-instagram"></i> Instagram</a> |
+      <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+    </div>
   </footer>
 
   <!-- تضمين ملف JavaScript -->

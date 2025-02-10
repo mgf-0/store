@@ -42,13 +42,25 @@ function updateCart() {
     emptyMessage.style.display = 'block';
   } else {
     emptyMessage.style.display = 'none';
+
     cart.forEach(item => {
       const div = document.createElement('div');
       div.className = 'cart-item';
+
       div.innerHTML = `
-        <p>${item.name} (${item.quantity})</p>
-        <p>$${item.price * item.quantity}</p>
+        <img src="images/${item.name.toLowerCase().replace(/ /g, '-')}.jpg" alt="${item.name}" style="width: 50px; height: 50px; border-radius: 8px;">
+        <div>
+          <p>${item.name} (${item.quantity})</p>
+          <p>$${item.price * item.quantity}</p>
+        </div>
+        <div class="quantity-controls">
+          <button onclick="changeQuantity('${item.name}', -1)">-</button>
+          <input type="text" value="${item.quantity}" readonly>
+          <button onclick="changeQuantity('${item.name}', 1)">+</button>
+        </div>
+        <button class="remove-btn" onclick="removeFromCart('${item.name}')">×</button>
       `;
+
       itemsDiv.appendChild(div);
       total += item.price * item.quantity;
     });
@@ -58,6 +70,29 @@ function updateCart() {
   document.getElementById('cart-count').textContent = cartCount;
 }
 
+// Change Quantity
+function changeQuantity(name, change) {
+  const item = cart.find(i => i.name === name);
+  if (item) {
+    item.quantity += change;
+    if (item.quantity <= 0) {
+      removeFromCart(name);
+    } else {
+      updateCart();
+    }
+  }
+}
+
+// Remove from Cart
+function removeFromCart(name) {
+  const index = cart.findIndex(i => i.name === name);
+  if (index !== -1) {
+    cartCount -= cart[index].quantity;
+    cart.splice(index, 1);
+    updateCart();
+  }
+}
+
 // Continue Shopping
 function continueShopping() {
   closeCart();
@@ -65,6 +100,10 @@ function continueShopping() {
 
 // Checkout
 function checkout() {
+  if (cart.length === 0) {
+    alert('السلة فارغة! لا يمكن إتمام عملية الدفع.');
+    return;
+  }
   alert('شكراً لك على الشراء! سيتم توجيهك إلى صفحة الدفع.');
   cart.length = 0;
   cartCount = 0;
